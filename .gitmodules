@@ -1,0 +1,3 @@
+[submodule "Starlight.Framework"]
+	path = Starlight.Framework
+	url = https://github.com/vddCore/Starlight.Framework

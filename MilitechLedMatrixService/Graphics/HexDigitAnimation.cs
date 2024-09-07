@@ -74,7 +74,6 @@ public class HexDigitAnimation
             if (animateExit)
             {
                 _display[2]!.Invert = _display[3]!.Invert = false;
-                ;
                 await Task.Delay(70);
 
                 _display[2]!.Invert = _display[3]!.Invert = true;
@@ -84,7 +83,6 @@ public class HexDigitAnimation
                 await Task.Delay(100);
 
                 _display[2]!.Invert = _display[3]!.Invert = true;
-                ;
                 await Task.Delay(120);
             }
         }

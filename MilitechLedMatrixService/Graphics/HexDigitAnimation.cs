@@ -46,7 +46,7 @@ public class HexDigitAnimation
 
         _animationStates[digit] = State.Stationary;
 
-        if (digit == 0 || digit == 1)
+        if (digit is 0 or 1)
         {
             var animateExit = _animationStates[0] == State.Stationary
                            && _animationStates[1] == State.Stationary;
@@ -66,7 +66,7 @@ public class HexDigitAnimation
                 await Task.Delay(120);
             }
         }
-        else if (digit == 2 || digit == 3)
+        else if (digit is 2 or 3)
         {
             var animateExit = _animationStates[2] == State.Stationary
                            && _animationStates[3] == State.Stationary;

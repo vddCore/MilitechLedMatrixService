@@ -4,19 +4,11 @@ using MilitechLedMatrixService.Graphics;
 
 public class Program
 {
-    public static void Main(string[] args)
+    private static HexDisplay _hexDisplay = new();
+    public static async Task Main(string[] args)
     {
-        var builder = Host.CreateApplicationBuilder(args);
-
-        builder.Services
-            .AddSingleton(new HexDisplay())
-            .AddHostedService<Worker>()
-            .AddWindowsService(options =>
-            {
-                options.ServiceName = "Militech Key Negotiation Service";
-            });
-
-        var host = builder.Build();
-        host.Run();
+        var cts = new CancellationTokenSource();
+        var worker = new Worker(_hexDisplay);
+        await worker.ExecuteAsync(cts.Token);
     }
 }

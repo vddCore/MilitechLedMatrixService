@@ -2,14 +2,11 @@ namespace MilitechLedMatrixService;
 
 using MilitechLedMatrixService.Graphics;
 
-public class Worker(ILogger<Worker> logger, HexDisplay hexDisplay) 
-    : BackgroundService
+public class Worker(HexDisplay hexDisplay) 
 {
-    private ILogger<Worker> _logger = logger;
-    private HexDisplay _hexDisplay = hexDisplay;
-    private HexDigitAnimation _animation = new(hexDisplay);
+    private readonly HexDigitAnimation _animation = new(hexDisplay);
     
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    public async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
@@ -27,7 +24,6 @@ public class Worker(ILogger<Worker> logger, HexDisplay hexDisplay)
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "{Message}", e.Message);
             Environment.Exit(1);
         }
     }
